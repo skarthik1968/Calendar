@@ -6,6 +6,6 @@
     tools:context="test.calendar.About"
     android:fitsSystemWindows="true">
 
-    
+
 
 </android.support.design.widget.CoordinatorLayout>
