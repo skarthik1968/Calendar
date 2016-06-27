@@ -13,15 +13,23 @@
         <activity android:name=".Facilities">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Calendar"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".About"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+
+        <activity
+            android:name=".About"
+            android:theme = "@style/AppTheme.AboutPageTheme"
+            />
+
+
     </application>
 
 </manifest>

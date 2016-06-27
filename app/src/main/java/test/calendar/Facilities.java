@@ -1,5 +1,6 @@
 package test.calendar;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -174,6 +175,10 @@ public class Facilities extends AppCompatActivity {
         }
     }
 
+public void aboutActivity(View view){
+    Intent intent = new Intent(this, About.class);
+    startActivity(intent);
+}
     /**
      * Converting dp to pixel
      */

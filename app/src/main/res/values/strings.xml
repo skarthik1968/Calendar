@@ -23,4 +23,34 @@
     <string name="title_activity_main">Main Activity</string>
     <string name="add_item">Add New Item</string>
     <string name="action_logout">Logout</string>
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
+
+    <string name="about_page_text">
+First of its kind in the city of Chennai established in 1951 having 1800 members
+Premium Club amongst peers located in a prime residential area in South of Chennai
+Close proximity and seamless connectivity to the Airport, Railway stations, MRTS &amp; Leading Hospitals
+Affiliations with over 25 reputed clubs across geographical locations in the country.
+Fully furnished 6 guest rooms equipped with Wi-Fi facility &amp; backed by efficient service.
+Exquisite Party Halls - fully air-conditioned, near sound proof, fitted with sound systems.
+Fine Blend of Outdoor &amp; Indoor sporting activities within the premises:
+Indoor
+Squash
+Badminton
+Table Tennis
+Cardio room
+Full fledged Gym with trainers
+Snooker &amp; Billiards
+Outdoor
+Tennis courts
+Swimming pool
+Children’s play area
+Dine in services at multiple locations in Restaurant, Deck Cafe, Lawn &amp; Roof Top.
+Spacious &amp; well laid out BAR stocking sought after brands.
+Variety entertainment all through the year featuring Movies, Tombola, Bar nights, Karaoke music, Carnatic &amp; Hindustani music amongst other special programs tailored for occasions.
+Well-stocked Library with books &amp; magazines covering diverse topics for all ages.
+Patronized by members and guests on a regular basis.</string>
+    <string name="the_alumni_club">The Alumni Club</string>
+    <string name="example_subtitle">About Page</string>
 </resources>
