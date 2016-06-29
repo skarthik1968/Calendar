@@ -68,7 +68,7 @@ public class Calendar extends AppCompatActivity {
                 builder1.setCancelable(true);
 
                 //CHANGES DIALOG BASED ON WHETHER CHOSEN IS "RESERVED"/"CANCEL"
-                if(Objects.equals(finalChosen, "reserved")) {
+                if(finalChosen.equals("reserve")) {
                     //RESERVATION CONFIRMATION
                     builder1.setMessage("Would you like to make a reservation on this date");
                 }
@@ -80,7 +80,7 @@ public class Calendar extends AppCompatActivity {
 
 
                 //RESERVATION CLASHING
-                Toast.makeText(getApplicationContext(), "Date right now right now right now?" + Timestamp + " " + finalChosen, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Date right now right now right now?" + Timestamp + " " + finalChosen, Toast.LENGTH_SHORT).show();
 
 
                 //read from database
@@ -109,33 +109,58 @@ public class Calendar extends AppCompatActivity {
 
                                 if(DAY == tempDay)
                                 {
-
                                     AlertDialog.Builder builder2 = new AlertDialog.Builder(Calendar.this);
-                                    builder2.setMessage("There is already a reservation here, reschedule?");
+                                    //if reserve is chosen then we say there is already a reservation here
+                                    if(finalChosen.equals("reserve")) {
+                                        builder2.setMessage("There is already a reservation here, reschedule?");
+                                    }
+                                    //if delete reservation was chosen we say this instead
+                                    else
+                                    {
+                                        builder2.setMessage("Are you sure you wan't to cancel appointment?");
+                                    }
+
                                     builder2.setCancelable(true);
+
 
                                     builder2.setPositiveButton(
                                             "Yes",
                                             new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
                                                     dialog.cancel();
+                                                    //two different actions based on if under reserved or cancel
+                                                    if(finalChosen.equals("cancel")){
+                                                        day.setValue(0);
+                                                        month.setValue(0);
+                                                        year.setValue(0);
+
+                                                    }
+
                                                 }
                                             });
 
 
+                                    if(finalChosen.equals("cancel")) {
+                                        builder2.setNegativeButton("No",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                    }
+
                                     AlertDialog alert11 = builder2.create();
                                     alert11.show();
-
-
-
                                 }
 
-                                //Checks if previous reservation exists
-                                //Sets date user asked to reserve
-                                day.setValue(DAY);
-                                month.setValue(MONTH);
-                                year.setValue(YEAR);
 
+                                //Sets date user asked to reserve if went under reserve option
+                                if(finalChosen.equals("reserve")) {
+                                    day.setValue(DAY);
+                                    month.setValue(MONTH);
+                                    year.setValue(YEAR);
+                                }
+                                //
 
                             }
                         });

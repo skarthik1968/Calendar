@@ -33,7 +33,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="false"
-                android:src="@drawable/material_flat"
+                android:src="@drawable/cover"
                 app:layout_collapseMode="parallax"
                 />
 
