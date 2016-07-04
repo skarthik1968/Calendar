@@ -40,7 +40,7 @@ public class Calendar extends AppCompatActivity {
         // Write a message to the database
         FirebaseDatabase dbDay = FirebaseDatabase.getInstance();
         final DatabaseReference date = dbDay.getReference("Date");
-//
+
 
         //userdatabase
 
