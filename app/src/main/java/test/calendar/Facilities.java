@@ -179,13 +179,6 @@ public void aboutActivity(View view){
     Intent intent = new Intent(this, About.class);
     startActivity(intent);
 }
-
-
-    public void mainActivity(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     /**
      * Converting dp to pixel
      */
