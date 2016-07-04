@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -30,6 +31,7 @@ public class Calendar extends AppCompatActivity {
     //receive option chosen
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +39,10 @@ public class Calendar extends AppCompatActivity {
 
         // Write a message to the database
         FirebaseDatabase dbDay = FirebaseDatabase.getInstance();
-        final DatabaseReference day = dbDay.getReference("Day");
+        final DatabaseReference date = dbDay.getReference("Date");
+//
 
-        FirebaseDatabase dbMonth = FirebaseDatabase.getInstance();
-        final DatabaseReference month = dbMonth.getReference("Month");
-
-        FirebaseDatabase dbYear = FirebaseDatabase.getInstance();
-        final DatabaseReference year = dbYear.getReference("Year");
+        //userdatabase
 
 
         Bundle extras = getIntent().getExtras();
@@ -84,7 +83,7 @@ public class Calendar extends AppCompatActivity {
 
 
                 //read from database
-                day.addValueEventListener(new ValueEventListener() {
+                date.child("day").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int value = dataSnapshot.getValue(int.class);
@@ -130,9 +129,10 @@ public class Calendar extends AppCompatActivity {
                                                     dialog.cancel();
                                                     //two different actions based on if under reserved or cancel
                                                     if(finalChosen.equals("cancel")){
-                                                        day.setValue(0);
-                                                        month.setValue(0);
-                                                        year.setValue(0);
+                                                        //day.setValue(0);
+                                                        date.child("month").setValue(0);
+                                                        date.child("year").setValue(0);
+                                                        date.child("day").setValue(0);
 
                                                     }
 
@@ -156,9 +156,12 @@ public class Calendar extends AppCompatActivity {
 
                                 //Sets date user asked to reserve if went under reserve option
                                 if(finalChosen.equals("reserve")) {
-                                    day.setValue(DAY);
-                                    month.setValue(MONTH);
-                                    year.setValue(YEAR);
+
+                                    //day.setValue(DAY);
+                                    date.child("month").setValue(MONTH);
+                                    date.child("year").setValue(YEAR);
+                                    date.child("day").setValue(DAY);
+
                                 }
                                 //
 
@@ -181,5 +184,7 @@ public class Calendar extends AppCompatActivity {
 
         });
 
+
     }
+
 }

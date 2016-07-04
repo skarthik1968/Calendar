@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class About extends AppCompatActivity {
 
     @Override
@@ -14,7 +17,10 @@ public class About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
 
+
     }
+
+
     public static void start(Context c) {
         c.startActivity(new Intent(c, About.class));
     }
