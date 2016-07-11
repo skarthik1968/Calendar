@@ -119,6 +119,7 @@ public class Facilities extends AppCompatActivity {
         a = new Album("Table Tennis", 12, covers[4]);
         albumList.add(a);
 
+
         //  a = new Album("I Need a Doctor", 1, covers[5]);
         //  albumList.add(a);
 

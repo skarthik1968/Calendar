@@ -20,6 +20,12 @@ public class About extends AppCompatActivity {
 
     }
 
+    public  void Facilities(View view)
+    {
+        Intent intent = new Intent(this,Facilities.class);
+        startActivity(intent);
+
+    }
 
     public static void start(Context c) {
         c.startActivity(new Intent(c, About.class));

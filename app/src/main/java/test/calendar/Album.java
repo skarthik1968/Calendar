@@ -1,12 +1,18 @@
 package test.calendar;
 
-/**
- * Created by Lincoln on 18/05/16.
- */
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.PopupMenu;
+import android.view.MenuItem;
+import android.widget.ImageView;
+
+
 public class Album {
     private String name;
     private int numOfSongs;
     private int thumbnail;
+
+    private Context mContext;
 
     public Album() {
     }
@@ -16,6 +22,10 @@ public class Album {
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;
     }
+
+
+
+
 
     public String getName() {
         return name;
