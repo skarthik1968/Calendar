@@ -45,7 +45,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                //startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivity(intent);
             }
         });
     }
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
             //    startActivity(intent);
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
+                startActivity(new Intent(getApplicationContext(), Facilities.class));
                 this.finish();
             }
         }
