@@ -7,22 +7,32 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class About extends AppCompatActivity {
+
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
 
+        //Instance variable for Firebase
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
     public  void Facilities(View view)
     {
-        Intent intent = new Intent(this,Facilities.class);
+        mAuth.signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        //Intent intent = new Intent(this,Facilities.class);
         startActivity(intent);
 
     }

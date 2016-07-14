@@ -2,7 +2,9 @@ package test.calendar;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 
 import android.content.Intent;
@@ -12,6 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
@@ -19,6 +27,13 @@ import butterknife.Bind;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+
+    // [START declare_auth_listener]
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    // [END declare_auth_listener]
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -33,9 +48,11 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
+           // String email = _emailText.getText().toString();
+           // String password = _passwordText.getText().toString();
             @Override
             public void onClick(View v) {
-                login();
+                signIn(_emailText.getText().toString(),_passwordText.getText().toString());
             }
         });
 
@@ -49,40 +66,141 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+
+        // [START auth_state_listener]
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // [START_EXCLUDE]
+                //updateUI(user);
+                // [END_EXCLUDE]
+            }
+        };
+        // [END auth_state_listener]
+
     }
 
-    public void login() {
-        Log.d(TAG, "Login");
 
-        if (!validate()) {
-            onLoginFailed();
+    // [START on_start_add_listener]
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    // [END on_start_add_listener]
+
+    // [START on_stop_remove_listener]
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+    // [END on_stop_remove_listener]
+
+    private void signIn(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+        if (!validateForm()) {
             return;
         }
 
-        _loginButton.setEnabled(false);
+        //showProgressDialog();
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme_Dark_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
+        // [START sign_in_with_email]
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        if (task.isSuccessful()){
+                            startActivity(new Intent(getApplication(),Facilities.class));
+                            finish();
+                            //Activity was started if succesful. why is the toast beloiw being shown
+                        }
+
+
+                        else {
+                            Log.w(TAG, "signInWithEmail", task.getException());
+                            Toast.makeText(LoginActivity.this,"Authentication failed.",Toast.LENGTH_SHORT).show();
+                        }
+
+
+                        // [START_EXCLUDE]
+          //              hideProgressDialog();
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END sign_in_with_email]
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
 
         String email = _emailText.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            _emailText.setError("Required.");
+            valid = false;
+        } else {
+            _emailText.setError(null);
+        }
+
         String password = _passwordText.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            _passwordText.setError("Required.");
+            valid = false;
+        } else {
+            _passwordText.setError(null);
+        }
 
-        // TODO: Implement your own authentication logic here.
-
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        return valid;
     }
+
+//    public void login() {
+//        Log.d(TAG, "Login");
+//
+//        if (!validate()) {
+//            onLoginFailed();
+//            return;
+//        }
+//
+//        _loginButton.setEnabled(false);
+//
+//        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+//                R.style.AppTheme_Dark_Dialog);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Authenticating...");
+//        progressDialog.show();
+//
+//       // String email = _emailText.getText().toString();
+//       // String password = _passwordText.getText().toString();
+//
+//        // TODO: Implement your own authentication logic here.
+//
+//
+//        new android.os.Handler().postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        // On complete call either onLoginSuccess or onLoginFailed
+//                        onLoginSuccess();
+//                        // onLoginFailed();
+//                        progressDialog.dismiss();
+//                    }
+//                }, 3000);
+//    }
 
 
     @Override
@@ -90,11 +208,9 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
-
-            //    Intent intent = new Intent(this,Facilities.class);
-            //    startActivity(intent);
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
+
                 startActivity(new Intent(getApplicationContext(), Facilities.class));
                 this.finish();
             }
