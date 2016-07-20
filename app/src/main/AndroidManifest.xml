@@ -34,9 +34,8 @@
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup" />
-
-        <activity android:name=".LoginActivity"></activity>
-
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Announcements"></activity>
     </application>
 
 </manifest>
