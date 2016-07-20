@@ -34,6 +34,12 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             count = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
+
+            thumbnail.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                showPopupMenu(v);
+                 }
+            });
         }
     }
 
@@ -47,6 +53,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.album_card, parent, false);
+
 
         return new MyViewHolder(itemView);
     }
@@ -79,6 +86,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
         popup.show();
     }
+
 
     /**
      * Click listener for popup menu items

@@ -79,22 +79,23 @@
             android:paddingRight="16dp">
 
 
-            <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:id="@+id/email_sign_in_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="sign_in"
-                android:theme="@style/ThemeOverlay.MyDarkButton" />
+            <!--<Button-->
+                <!--&lt;!&ndash;style="?android:attr/buttonBarButtonStyle"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/email_sign_in_button"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text="sign in"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:theme="@style/ThemeOverlay.MyDarkButton" />&ndash;&gt;-->
 
             <Button
                 style="?android:attr/buttonBarButtonStyle"
+                android:layout_margin="10dp"
                 android:id="@+id/email_create_account_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="create_account"
+                android:text="create account"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
 

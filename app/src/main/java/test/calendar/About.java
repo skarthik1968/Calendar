@@ -1,5 +1,6 @@
 package test.calendar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -30,10 +31,10 @@ public class About extends AppCompatActivity {
 
     public  void Facilities(View view)
     {
-        mAuth.signOut();
-        Intent intent = new Intent(this, LoginActivity.class);
+
+        this.finish();
         //Intent intent = new Intent(this,Facilities.class);
-        startActivity(intent);
+        //startActivity(intent);
 
     }
 

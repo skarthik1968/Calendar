@@ -43,7 +43,7 @@ public class SignupActivity extends LoadingDialog implements View.OnClickListene
         mPasswordField = (EditText) findViewById(R.id.field_password);
 
         // Buttons
-        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
+        //findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
 
@@ -124,7 +124,7 @@ public class SignupActivity extends LoadingDialog implements View.OnClickListene
 
     private void signOut() {
         mAuth.signOut();
-        updateUI(null);
+        //updateUI(null);
     }
 
 
@@ -178,9 +178,9 @@ public class SignupActivity extends LoadingDialog implements View.OnClickListene
             case R.id.email_create_account_button:
                 createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
                 break;
-            case R.id.email_sign_in_button:
+            //case R.id.email_sign_in_button:
                 //signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-                break;
+              //  break;
             case R.id.sign_out_button:
                 signOut();
                 break;

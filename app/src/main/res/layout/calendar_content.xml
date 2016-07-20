@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="16dp"
-        android:paddingTop="16dp"/>
+        android:paddingTop="56dp"/>
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -23,7 +23,7 @@
         android:layout_height="400dp"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:layout_weight="0.01" />
+        />
 
 
 </LinearLayout>

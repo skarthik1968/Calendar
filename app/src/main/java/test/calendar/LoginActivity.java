@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
                         if (task.isSuccessful()){
-                            startActivity(new Intent(getApplication(),Facilities.class));
+                            startActivity(new Intent(getApplication(),UserPage.class));
                             finish();
                             //Activity was started if succesful. why is the toast beloiw being shown
                         }
