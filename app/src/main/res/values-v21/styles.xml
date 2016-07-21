@@ -21,4 +21,10 @@
         <item name="android:textSize">30sp</item>
     </style>
 
+    <!--Should make things transparent-->
+    <style name="AppTheme.LoginPageTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
 </resources>
