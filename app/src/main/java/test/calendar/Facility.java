@@ -7,17 +7,17 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 
-public class Album {
+public class Facility {
     private String name;
     private int numOfSongs;
     private int thumbnail;
 
     private Context mContext;
 
-    public Album() {
+    public Facility() {
     }
 
-    public Album(String name, int numOfSongs, int thumbnail) {
+    public Facility(String name, int numOfSongs, int thumbnail) {
         this.name = name;
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;

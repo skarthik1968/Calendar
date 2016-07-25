@@ -64,7 +64,7 @@ Patronized by members and guests on a regular basis.</string>
     <string name="emailpassword_status_fmt">Email User: %s</string>
     <string name="emailpassword_title_text">Email and Password</string>
 
-    <!--String related to MainActivity-->
+    <!--String related to Announcements-->
     <array name="main_items">
         <item>List - Basic Drag and Swipe</item>
         <item>Grid - Basic Swipe</item>

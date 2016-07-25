@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".UserPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
             android:label="@string/title_activity_signup" />
         <activity android:name=".Facilities" />
 
-        <activity android:name=".UserPage"></activity>
+        <activity android:name=".Announcements"></activity>
     </application>
 
 </manifest>

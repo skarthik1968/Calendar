@@ -86,12 +86,15 @@ public class UserPage extends ActionBarActivity {
                         break;
                     case 3:
                         //LOGOUT
-                        mAuth.signOut();
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        //Intent in = new Intent(getApplicationContext(),Facilities.class);
-                        startActivity(intent);
+                        //mAuth.signOut();
+                        //Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        //startActivity(intent);
 
-                      /*  mDrawerList.setBackgroundColor(getResources().getColor(R.color.material_blue_grey_800));
+                        //ANNOUNCEMENTS
+
+                        Intent intent = new Intent(getApplicationContext(),Announcements.class);
+                      startActivity(intent);
+                        /*  mDrawerList.setBackgroundColor(getResources().getColor(R.color.material_blue_grey_800));
                         toolbar.setBackgroundColor(getResources().getColor(R.color.material_blue_grey_800));
                         slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.material_blue_grey_800));
                         mDrawerLayout.closeDrawer(Gravity.START);*/

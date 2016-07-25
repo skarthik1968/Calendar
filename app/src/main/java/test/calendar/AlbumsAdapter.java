@@ -20,7 +20,7 @@ import java.util.List;
 public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Album> albumList;
+    private List<Facility> albumList;
 
 
 
@@ -44,7 +44,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     }
 
 
-    public AlbumsAdapter(Context mContext, List<Album> albumList) {
+    public AlbumsAdapter(Context mContext, List<Facility> albumList) {
         this.mContext = mContext;
         this.albumList = albumList;
     }
@@ -60,7 +60,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Album album = albumList.get(position);
+        Facility album = albumList.get(position);
         holder.title.setText(album.getName());
         holder.count.setText(album.getNumOfSongs() + " slots free");
 

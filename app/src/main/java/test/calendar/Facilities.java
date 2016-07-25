@@ -24,7 +24,7 @@ public class Facilities extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AlbumsAdapter adapter;
-    private List<Album> albumList;
+    private List<Facility> albumList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,36 +105,20 @@ public class Facilities extends AppCompatActivity {
                 R.drawable.album10,
                 R.drawable.album11};
 
-        Album a = new Album("Swimming", 8, covers[0]);
+        Facility a = new Facility("Swimming", 8, covers[0]);
         albumList.add(a);
 
-        a = new Album("Tennis", 6, covers[1]);
+        a = new Facility("Tennis", 6, covers[1]);
         albumList.add(a);
 
-        a = new Album("Racquetball", 11, covers[2]);
+        a = new Facility("Racquetball", 11, covers[2]);
         albumList.add(a);
 
-        a = new Album("Badminton", 9, covers[3]);
+        a = new Facility("Badminton", 9, covers[3]);
         albumList.add(a);
 
-        a = new Album("Table Tennis", 12, covers[4]);
+        a = new Facility("Table Tennis", 12, covers[4]);
         albumList.add(a);
-
-
-        //  a = new Album("I Need a Doctor", 1, covers[5]);
-        //  albumList.add(a);
-
-        //  a = new Album("Loud", 11, covers[6]);
-        //  albumList.add(a);
-
-        //  a = new Album("Legend", 14, covers[7]);
-        //  albumList.add(a);
-
-        //  a = new Album("Hello", 11, covers[8]);
-        //  albumList.add(a);
-
-        //  a = new Album("Greatest Hits", 17, covers[9]);
-        //  albumList.add(a);
 
         adapter.notifyDataSetChanged();
     }
